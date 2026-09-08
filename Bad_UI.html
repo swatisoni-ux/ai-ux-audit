@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard System</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fa;
+            color: #333;
+        }
+
+        /* Basic site chrome */
+        .topbar {
+            height: 64px;
+            background: #20242a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            letter-spacing: .3px;
+        }
+        .logo-mark {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            background: #6c63ff;
+            display: grid;
+            place-items: center;
+            font-size: 14px;
+        }
+        nav {
+            display: flex;
+            gap: 26px;
+        }
+        nav a {
+            color: #cfd3d8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        nav a.active { color: white; }
+
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 36px 28px 60px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb {
+            color: #777;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        /* VIOLATION: Extremely low contrast text */
+        .muted-text {
+            color: #e1e1e1;
+            font-size: 11px;
+            margin-bottom: 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 28px;
+        }
+
+        .sidebar {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            height: fit-content;
+        }
+        .sidebar a {
+            display: block;
+            padding: 10px 12px;
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        .sidebar a.selected {
+            background: #eee;
+            color: #222;
+            font-weight: bold;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background: white;
+            max-width: 650px;
+            border-radius: 4px;
+        }
+
+        /* VIOLATION: Green for a destructive action, breaking standard conventions */
+        .btn-delete {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* VIOLATION: Mysterious icon with zero labels */
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .form-group { margin-top: 15px; }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        /* VIOLATION: Highly cryptic error state with no recovery instructions */
+        .error-box {
+            background: #fde8e8;
+            color: #e74c3c;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        footer {
+            margin-top: 48px;
+            padding-top: 18px;
+            border-top: 1px solid #ddd;
+            color: #888;
+            font-size: 12px;
+        }
+
+        @media (max-width: 720px) {
+            nav { display: none; }
+            .content-grid { grid-template-columns: 1fr; }
+            .page { padding: 24px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="logo">
+            <div class="logo-mark">DS</div>
+            <span>Dashboard System</span>
+        </div>
+        <nav aria-label="Primary navigation">
+            <a href="#">Dashboard</a>
+            <a href="#" class="active">Settings</a>
+            <a href="#">Reports</a>
+            <a href="#">Help</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="page-header">
+            <div>
+                <div class="breadcrumb">Dashboard / Account Settings</div>
+                <h2>System Overlord Console v4.2.1-beta</h2>
+                <p class="muted-text">Current Node Lifecycle Sync Interval: 4000ms. Do not interrupt terminal threads.</p>
+            </div>
+
+            <!-- VIOLATION: Mystery Meat Navigation (an abstract icon with no tooltip or label) -->
+            <button class="icon-btn" title="">⎋</button>
+        </div>
+
+        <div class="content-grid">
+            <aside class="sidebar">
+                <a href="#">Profile</a>
+                <a href="#" class="selected">Account Settings</a>
+                <a href="#">Notifications</a>
+                <a href="#">Security</a>
+            </aside>
+
+            <section class="card">
+                <h3>Account Settings</h3>
+                <p>Manage your account settings and preferences below.</p>
+
+                <!-- VIOLATION: Triggers a 15-second freeze with absolutely no loading spinner/bar -->
+                <button onclick="alert('Processing... Please wait up to 15 seconds.');" style="padding: 10px;">
+                    Sync Database
+                </button>
+
+                <div class="form-group">
+                    <label>Update Username</label><br>
+                    <input type="text" value="admin_user_99">
+
+                    <!-- VIOLATION: Error code provides zero human-readable context or way to fix it -->
+                    <div class="error-box">Critical Exception: ERR_HEX_0x002F89. Write access restricted.</div>
+                </div>
+
+                <hr style="margin-top:25px; border: 0; border-top: 1px solid #eee;">
+
+                <div class="form-group">
+                    <p>Danger Zone:</p>
+
+                    <!-- VIOLATION: Deletes account immediately on click with no confirmation dialog -->
+                    <button class="btn-delete" onclick="alert('Account permanently purged! No backup found.');">
+                        DELETE ACCOUNT PERMANENTLY
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            Dashboard System © 2026 · System status: Operational
+        </footer>
+    </main>
+
+</body>
+</html>
